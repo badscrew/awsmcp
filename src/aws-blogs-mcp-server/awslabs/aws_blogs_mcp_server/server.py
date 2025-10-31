@@ -424,7 +424,7 @@ async def _search_rss_feed(rss_url: str, query: str, limit: int) -> List[SearchR
                     title=title,
                     url=entry.get('link', ''),
                     summary=summary,
-                    published_date=published_date,
+                    published_date=published_date.isoformat() if published_date else None,
                     relevance_score=relevance_score
                 )
                 results.append(result)
@@ -463,7 +463,7 @@ async def _get_posts_from_rss(rss_url: str, limit: int) -> List[BlogPost]:
                 url=entry.get('link', ''),
                 summary=entry.get('summary', ''),
                 author=entry.get('author', ''),
-                published_date=published_date,
+                published_date=published_date.isoformat() if published_date else None,
                 category=category
             )
             posts.append(post)
