@@ -14,8 +14,7 @@
 """Data models for AWS Blogs MCP Server."""
 
 from pydantic import BaseModel, Field
-from typing import Optional, Union
-from datetime import datetime
+from typing import Optional
 
 
 class BlogPost(BaseModel):
@@ -25,7 +24,7 @@ class BlogPost(BaseModel):
     url: str
     summary: Optional[str] = None
     author: Optional[str] = None
-    published_date: Optional[Union[datetime, str]] = Field(None, description="Published date as ISO string or datetime")
+    published_date: Optional[str] = Field(None, description="Published date as ISO string")
     category: Optional[str] = None
     tags: Optional[list[str]] = None
 
@@ -46,6 +45,6 @@ class SearchResult(BaseModel):
     title: str
     url: str
     summary: Optional[str] = None
-    published_date: Optional[Union[datetime, str]] = Field(None, description="Published date as ISO string or datetime")
+    published_date: Optional[str] = Field(None, description="Published date as ISO string")
     category: Optional[str] = None
     relevance_score: Optional[float] = None

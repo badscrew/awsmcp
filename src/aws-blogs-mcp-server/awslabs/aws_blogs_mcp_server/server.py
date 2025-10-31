@@ -340,7 +340,7 @@ async def get_recent_posts(
                     continue
         
         # Sort by published date and limit results
-        posts = sorted(posts, key=lambda x: x.published_date or datetime.min, reverse=True)[:limit]
+        posts = sorted(posts, key=lambda x: x.published_date or "1900-01-01T00:00:00", reverse=True)[:limit]
         
         return posts
         
